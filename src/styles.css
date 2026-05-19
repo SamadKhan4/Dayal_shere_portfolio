@@ -306,7 +306,8 @@ h2 {
 
 .services-grid,
 .projects-grid,
-.skills-grid {
+.skills-grid,
+.social-grid {
   display: grid;
   gap: 16px;
 }
@@ -326,12 +327,44 @@ h2 {
 }
 
 .service-card {
+  display: block;
   min-height: 250px;
   padding: 26px;
 }
 
+.service-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 24px 58px rgba(23, 32, 42, 0.1);
+}
+
 .service-card svg {
   color: #d95d39;
+}
+
+.service-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.service-card-top span {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: #14213d;
+  color: #ffffff;
+}
+
+.service-card-top span svg {
+  color: currentColor;
+}
+
+.service-card:hover .service-card-top span {
+  background: #d95d39;
 }
 
 h3 {
@@ -416,6 +449,10 @@ footer {
   padding-bottom: 8px;
 }
 
+.social-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .project-card {
   display: flex;
   min-height: 310px;
@@ -438,6 +475,39 @@ footer {
   background: #14213d;
   color: #ffffff;
   font-size: 14px;
+}
+
+.social-card {
+  display: flex;
+  min-height: 138px;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 22px;
+  border: 1px solid rgba(20, 33, 61, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.74);
+  box-shadow: 0 18px 46px rgba(23, 32, 42, 0.07);
+}
+
+.social-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 24px 58px rgba(23, 32, 42, 0.1);
+}
+
+.social-card span {
+  color: #0d5d73;
+  font-size: 12px;
+  font-weight: 900;
+  overflow-wrap: anywhere;
+}
+
+.social-card h3 {
+  margin-top: 12px;
+}
+
+.social-card svg {
+  flex: 0 0 auto;
+  color: #d95d39;
 }
 
 .skills-grid {
@@ -479,6 +549,289 @@ footer {
   border-radius: 8px;
   background: #ffffff;
   box-shadow: 0 24px 70px rgba(23, 32, 42, 0.09);
+}
+
+.service-detail {
+  width: min(1180px, calc(100% - 32px));
+  min-height: calc(100vh - 110px);
+  margin: 0 auto;
+  padding: 64px 0 82px;
+}
+
+.back-link {
+  display: inline-flex;
+  width: fit-content;
+  margin-bottom: 28px;
+  color: #0d5d73;
+  font-size: 14px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.service-detail-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 420px;
+  gap: 36px;
+  align-items: start;
+}
+
+.service-detail-copy,
+.service-detail-panel {
+  border: 1px solid rgba(20, 33, 61, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 24px 70px rgba(23, 32, 42, 0.08);
+}
+
+.service-detail-copy {
+  padding: 38px;
+}
+
+.service-detail-copy > span,
+.service-detail-panel > span {
+  color: #0d5d73;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.service-detail-copy svg {
+  display: block;
+  margin-top: 28px;
+  color: #d95d39;
+}
+
+.service-detail-copy h1 {
+  max-width: 760px;
+  margin-top: 22px;
+  font-size: clamp(42px, 6vw, 76px);
+  line-height: 0.98;
+}
+
+.service-detail-copy p,
+.service-detail > p {
+  max-width: 720px;
+  margin-top: 22px;
+  color: #42484f;
+  font-size: 20px;
+  line-height: 1.58;
+}
+
+.service-detail-panel {
+  padding: 28px;
+}
+
+.service-detail-panel ul {
+  display: grid;
+  gap: 16px;
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.service-detail-panel li {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  gap: 10px;
+  color: #42484f;
+  line-height: 1.55;
+}
+
+.service-detail-panel li svg {
+  color: #d95d39;
+  margin-top: 3px;
+}
+
+.service-social-list {
+  margin-top: 34px;
+}
+
+.service-project-list,
+.service-analytics-list,
+.service-ecommerce-list,
+.service-email-list,
+.service-paid-list,
+.service-whatsapp-list {
+  margin-top: 34px;
+}
+
+.service-social-list > span,
+.service-project-list > span,
+.service-analytics-list > span,
+.service-ecommerce-list > span,
+.service-email-list > span,
+.service-paid-list > span,
+.service-whatsapp-list > span {
+  display: block;
+  margin-bottom: 16px;
+  color: #0d5d73;
+  font-size: 13px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.seo-project-grid,
+.analytics-gallery,
+.ecommerce-gallery,
+.email-gallery,
+.paid-gallery,
+.whatsapp-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.seo-project-card {
+  padding: 24px;
+  border: 1px solid rgba(20, 33, 61, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 18px 46px rgba(23, 32, 42, 0.07);
+}
+
+.seo-project-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.seo-project-top span {
+  display: block;
+  max-width: 560px;
+  color: #0d5d73;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+.seo-project-top a {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: #14213d;
+  color: #ffffff;
+}
+
+.seo-tool-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.seo-tool-list span {
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: rgba(13, 93, 115, 0.09);
+  color: #1d4855;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.keyword-list {
+  display: grid;
+  gap: 9px;
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.keyword-list li {
+  padding-left: 14px;
+  border-left: 3px solid #d95d39;
+  color: #42484f;
+  line-height: 1.45;
+}
+
+.analytics-gallery {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.analytics-image-card,
+.ecommerce-image-card,
+.paid-image-card,
+.email-image-card {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(20, 33, 61, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 18px 46px rgba(23, 32, 42, 0.07);
+}
+
+.analytics-image-card img,
+.ecommerce-image-card img,
+.paid-image-card img,
+.email-image-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.paid-gallery {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.whatsapp-sample-card {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 24px;
+  border: 1px solid rgba(20, 33, 61, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 18px 46px rgba(23, 32, 42, 0.07);
+}
+
+.whatsapp-sample-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 24px 58px rgba(23, 32, 42, 0.1);
+}
+
+.whatsapp-sample-card span {
+  color: #0d5d73;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.whatsapp-sample-card p {
+  margin-top: 12px;
+  color: #42484f;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+.whatsapp-sample-card svg {
+  flex: 0 0 auto;
+  color: #d95d39;
+}
+
+.whatsapp-gallery {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 16px;
+}
+
+.whatsapp-image-card {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(20, 33, 61, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 18px 46px rgba(23, 32, 42, 0.07);
+}
+
+.whatsapp-image-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 .contact-band h2 {
@@ -537,7 +890,8 @@ footer span {
   .hero,
   .timeline-item,
   .contact-band,
-  .section-heading {
+  .section-heading,
+  .service-detail-grid {
     grid-template-columns: 1fr;
   }
 
@@ -550,7 +904,14 @@ footer span {
   }
 
   .services-grid,
-  .skills-grid {
+  .skills-grid,
+  .social-grid,
+  .seo-project-grid,
+  .analytics-gallery,
+  .ecommerce-gallery,
+  .email-gallery,
+  .paid-gallery,
+  .whatsapp-gallery {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -568,6 +929,7 @@ footer span {
   .hero,
   .section,
   .contact-band,
+  .service-detail,
   footer {
     width: calc(100% - 24px);
   }
@@ -594,13 +956,22 @@ footer span {
   }
 
   .hero-panel,
-  .contact-band {
+  .contact-band,
+  .service-detail-copy,
+  .service-detail-panel {
     padding: 18px;
   }
 
   .signal-grid,
   .services-grid,
-  .skills-grid {
+  .skills-grid,
+  .social-grid,
+  .seo-project-grid,
+  .analytics-gallery,
+  .ecommerce-gallery,
+  .email-gallery,
+  .paid-gallery,
+  .whatsapp-gallery {
     grid-template-columns: 1fr;
   }
 
