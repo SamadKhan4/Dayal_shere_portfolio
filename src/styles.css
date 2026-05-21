@@ -29,6 +29,11 @@ a {
   text-decoration: none;
 }
 
+img,
+video {
+  max-width: 100%;
+}
+
 main {
   overflow: hidden;
 }
@@ -151,9 +156,10 @@ h1 {
   max-width: 760px;
   margin-top: 24px;
   color: #101114;
-  font-size: clamp(58px, 8vw, 118px);
+  font-size: clamp(44px, 8vw, 118px);
   line-height: 0.9;
   letter-spacing: 0;
+  overflow-wrap: anywhere;
 }
 
 .hero-lead {
@@ -188,6 +194,7 @@ h1 {
 
 .hero-panel {
   position: relative;
+  min-width: 0;
   padding: 24px;
   border: 1px solid rgba(20, 33, 61, 0.12);
   border-radius: 8px;
@@ -243,7 +250,7 @@ h1 {
   display: block;
   margin-top: 18px;
   max-width: 360px;
-  font-size: clamp(30px, 4vw, 50px);
+  font-size: clamp(20px, 4vw, 30px);
   line-height: 1.02;
 }
 
@@ -320,6 +327,7 @@ h2 {
 .project-card,
 .skill-card,
 .timeline-item {
+  min-width: 0;
   border: 1px solid rgba(20, 33, 61, 0.1);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.74);
@@ -570,13 +578,14 @@ footer {
 
 .service-detail-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 420px;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
   gap: 36px;
   align-items: start;
 }
 
 .service-detail-copy,
 .service-detail-panel {
+  min-width: 0;
   border: 1px solid rgba(20, 33, 61, 0.1);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.78);
@@ -605,7 +614,7 @@ footer {
 .service-detail-copy h1 {
   max-width: 760px;
   margin-top: 22px;
-  font-size: clamp(42px, 6vw, 76px);
+  font-size: clamp(36px, 6vw, 76px);
   line-height: 0.98;
 }
 
@@ -652,7 +661,9 @@ footer {
 .service-ecommerce-list,
 .service-email-list,
 .service-paid-list,
-.service-whatsapp-list {
+.service-whatsapp-list,
+.service-youtube-list,
+.service-graphics-list {
   margin-top: 34px;
 }
 
@@ -662,7 +673,10 @@ footer {
 .service-ecommerce-list > span,
 .service-email-list > span,
 .service-paid-list > span,
-.service-whatsapp-list > span {
+.service-whatsapp-list > span,
+.service-youtube-list > span,
+.service-graphics-list > span,
+.service-subheading {
   display: block;
   margin-bottom: 16px;
   color: #0d5d73;
@@ -676,7 +690,10 @@ footer {
 .ecommerce-gallery,
 .email-gallery,
 .paid-gallery,
-.whatsapp-gallery {
+.whatsapp-gallery,
+.youtube-gallery,
+.video-gallery,
+.graphics-gallery {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
@@ -754,7 +771,10 @@ footer {
 .analytics-image-card,
 .ecommerce-image-card,
 .paid-image-card,
-.email-image-card {
+.email-image-card,
+.youtube-image-card,
+.video-card,
+.graphics-image-card {
   margin: 0;
   overflow: hidden;
   border: 1px solid rgba(20, 33, 61, 0.1);
@@ -766,7 +786,10 @@ footer {
 .analytics-image-card img,
 .ecommerce-image-card img,
 .paid-image-card img,
-.email-image-card img {
+.email-image-card img,
+.youtube-image-card img,
+.graphics-image-card img,
+.video-card video {
   display: block;
   width: 100%;
   height: auto;
@@ -816,6 +839,30 @@ footer {
 .whatsapp-gallery {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   margin-top: 16px;
+}
+
+.youtube-gallery {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.video-gallery {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 16px;
+}
+
+.graphics-gallery {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.service-subheading {
+  margin-top: 28px;
+}
+
+.video-card video {
+  aspect-ratio: 9 / 16;
+  height: 520px;
+  background: #101820;
+  object-fit: cover;
 }
 
 .whatsapp-image-card {
@@ -878,9 +925,28 @@ footer span {
   gap: 7px;
 }
 
+@media (max-width: 1100px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 0.85fr);
+    gap: 28px;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .paid-gallery,
+  .whatsapp-gallery,
+  .youtube-gallery,
+  .video-gallery,
+  .graphics-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 920px) {
   .site-header {
-    align-items: flex-start;
+    align-items: center;
   }
 
   nav {
@@ -897,6 +963,7 @@ footer span {
 
   .hero {
     min-height: auto;
+    padding-top: 44px;
   }
 
   .hero-panel {
@@ -911,19 +978,42 @@ footer span {
   .ecommerce-gallery,
   .email-gallery,
   .paid-gallery,
-  .whatsapp-gallery {
+  .whatsapp-gallery,
+  .youtube-gallery,
+  .video-gallery,
+  .graphics-gallery {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .project-card {
+    min-height: 260px;
+  }
+
+  .contact-band {
+    gap: 24px;
   }
 }
 
 @media (max-width: 620px) {
   .site-header {
+    position: static;
     width: calc(100% - 20px);
     margin-top: 10px;
+    gap: 12px;
   }
 
   .header-cta {
     display: none;
+  }
+
+  .brand {
+    min-width: 0;
+  }
+
+  .brand strong {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .hero,
@@ -935,11 +1025,30 @@ footer span {
   }
 
   .hero {
-    padding-top: 44px;
+    padding: 36px 0 42px;
   }
 
   h1 {
-    font-size: 56px;
+    font-size: clamp(42px, 15vw, 56px);
+  }
+
+  h2 {
+    font-size: clamp(30px, 11vw, 42px);
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+
+  .eyebrow {
+    align-items: flex-start;
+    line-height: 1.35;
+  }
+
+  .hero-lead,
+  .service-detail-copy p,
+  .service-detail > p {
+    font-size: 17px;
   }
 
   .hero-actions,
@@ -962,6 +1071,16 @@ footer span {
     padding: 18px;
   }
 
+  .growth-card {
+    padding: 20px;
+  }
+
+  .growth-card strong {
+    font-size: 26px;
+    line-height: 1.12;
+    overflow-wrap: anywhere;
+  }
+
   .signal-grid,
   .services-grid,
   .skills-grid,
@@ -971,7 +1090,10 @@ footer span {
   .ecommerce-gallery,
   .email-gallery,
   .paid-gallery,
-  .whatsapp-gallery {
+  .whatsapp-gallery,
+  .youtube-gallery,
+  .video-gallery,
+  .graphics-gallery {
     grid-template-columns: 1fr;
   }
 
@@ -979,8 +1101,83 @@ footer span {
     padding: 58px 0;
   }
 
+  .section-heading {
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+
   .projects-grid {
     grid-template-columns: 1fr;
     overflow: visible;
+  }
+
+  .service-card,
+  .project-card,
+  .skill-card,
+  .timeline-item,
+  .social-card,
+  .seo-project-card,
+  .whatsapp-sample-card {
+    padding: 18px;
+  }
+
+  .timeline-item li,
+  .service-detail-panel li {
+    grid-template-columns: 18px minmax(0, 1fr);
+  }
+
+  .social-card {
+    min-height: auto;
+  }
+
+  .contact-band {
+    margin-bottom: 48px;
+  }
+
+  .video-card video {
+    height: min(540px, 145vw);
+  }
+}
+
+@media (max-width: 420px) {
+  .hero,
+  .section,
+  .contact-band,
+  .service-detail,
+  footer {
+    width: calc(100% - 18px);
+  }
+
+  .site-header {
+    width: calc(100% - 18px);
+    padding: 10px;
+  }
+
+  .brand span {
+    width: 34px;
+    height: 34px;
+    font-size: 13px;
+  }
+
+  .service-detail {
+    padding-top: 38px;
+  }
+
+  .service-detail-copy h1 {
+    font-size: 34px;
+  }
+
+  .hero-actions {
+    gap: 10px;
+  }
+
+  .primary-btn,
+  .secondary-btn {
+    min-height: 48px;
+    padding: 0 14px;
+  }
+
+  .video-card video {
+    height: min(500px, 150vw);
   }
 }

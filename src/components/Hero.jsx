@@ -32,7 +32,7 @@ export default function Hero() {
         </div>
         <div className="growth-card">
           <span>Organic + Paid Growth</span>
-          <strong>SEO, PPC, Social, Email</strong>
+          <strong>DIGITAL MARKETING , SEO , PERFORMANCE MARKETER , SOCIAL MEDIA MARKETING</strong>
         </div>
         <div className="signal-grid">
           {metrics.map((metric) => (

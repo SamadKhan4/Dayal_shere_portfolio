@@ -30,6 +30,34 @@ import whatsappMarketingImageSeven from "../assets/watsapp7.jpeg";
 
 const whatsappCampaignUrl = "https://zcmp.in/GgI4?m=0";
 
+const makeGalleryItems = (modules, altPrefix) =>
+  Object.entries(modules)
+    .sort(([firstPath], [secondPath]) => {
+      const firstNumber = Number(firstPath.match(/\((\d+)\)/)?.[1] ?? 0);
+      const secondNumber = Number(secondPath.match(/\((\d+)\)/)?.[1] ?? 0);
+
+      return firstNumber - secondNumber;
+    })
+    .map(([, module], index) => ({
+      src: module.default,
+      alt: `${altPrefix} ${index + 1}`,
+    }));
+
+const graphicDesignImages = makeGalleryItems(
+  import.meta.glob("../assets/Graphics & Youtube video/Graphics (*.jpeg", { eager: true }),
+  "Graphic design sample",
+);
+
+const youtubeImages = makeGalleryItems(
+  import.meta.glob("../assets/Graphics & Youtube video/youtube (*.jpeg", { eager: true }),
+  "YouTube thumbnail sample",
+);
+
+const youtubeVideos = makeGalleryItems(
+  import.meta.glob("../assets/Graphics & Youtube video/video (*.mp4", { eager: true }),
+  "YouTube video sample",
+);
+
 const analyticsImages = [
   {
     src: analyticsImageOne,
@@ -309,6 +337,41 @@ export default function ServiceDetail({ slug }) {
             <div className="whatsapp-gallery">
               {whatsappMarketingImages.map((image) => (
                 <figure className="whatsapp-image-card" key={image.src}>
+                  <img src={image.src} alt={image.alt} />
+                </figure>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {service.slug === "video-youtube" && (
+          <div className="service-youtube-list">
+            <span>YouTube thumbnails</span>
+            <div className="youtube-gallery">
+              {youtubeImages.map((image) => (
+                <figure className="youtube-image-card" key={image.src}>
+                  <img src={image.src} alt={image.alt} />
+                </figure>
+              ))}
+            </div>
+
+            <span className="service-subheading">Auto-play video samples</span>
+            <div className="video-gallery">
+              {youtubeVideos.map((video) => (
+                <figure className="video-card" key={video.src}>
+                  <video src={video.src} autoPlay muted loop playsInline preload="metadata" aria-label={video.alt} />
+                </figure>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {service.slug === "graphic-designing" && (
+          <div className="service-graphics-list">
+            <span>Graphic design samples</span>
+            <div className="graphics-gallery">
+              {graphicDesignImages.map((image) => (
+                <figure className="graphics-image-card" key={image.src}>
                   <img src={image.src} alt={image.alt} />
                 </figure>
               ))}
